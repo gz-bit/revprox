@@ -1,14 +1,23 @@
-import { component$, useSignal, useStore, useTask$ } from '@builder.io/qwik';
+import { $, component$, useSignal, useStore, useTask$ } from '@builder.io/qwik';
 
-export const Button = component$(() => {
-  const message = useSignal("Signal Massage")
-  const state = useStore({message: "Store Message"})
+interface Props {
+  handleFunction: ()=>{}
+}
 
+export const Button = component$((props: Props) => {
+  const message = useSignal("Signal Message")
   console.log(message.value)
-  useTask$(() => {
-    console.log(state.message)
+
+  const state = useStore({message: "Store Message", count: 0})
+
+  useTask$(({track}) => {
+    track(state)
+    console.log(state.message, state.count) // Store Message
   })
-  return <button class="bg-sky-500 py-2 px-4 rounded-sm text-white hover:bg-sky-400">
+
+  return <button 
+            onClick$={props.handleFunction}
+            class="bg-sky-500 py-2 px-4 rounded-sm text-white hover:bg-sky-400">
     Click me!
   </button>
 });
