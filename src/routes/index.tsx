@@ -2,24 +2,18 @@ import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 export default component$(() => {
-  return (
-    <>
-      <h1>Hi 👋</h1>
-      <div>
-        Can't wait to see what you build with qwik!
-        <br />
-        Happy coding.
-      </div>
-    </>
-  );
+  return <div class="p-3">
+      <h1>Home Page</h1>
+      
+  </div>
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "revprox",
   meta: [
     {
       name: "description",
-      content: "Qwik site description",
+      content: "Reversw Proxy managing Docker containers",
     },
   ],
 };
